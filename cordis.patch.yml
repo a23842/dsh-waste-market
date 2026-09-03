@@ -1,0 +1,6 @@
+# bundle patch for the waste-market plugin: inserts its plugin row into the web
+# profile roster. Applied as a profile bundle layer (the `dsh.bundle.patch`
+# manifest field).
+- insert:
+    - id: waste-market
+      name: 'dsh-waste-market'
