@@ -3,4 +3,4 @@
 # manifest field).
 - insert:
     - id: waste-market
-      name: 'dsh-waste-market'
+      name: '@a23842/dsh-waste-market'

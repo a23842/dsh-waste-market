@@ -28,19 +28,19 @@ A 股行情面板插件，为 [DeepSeek Harness](https://github.com/deepseek-ai/
 ## 安装
 
 ```bash
-dsh plugin --profile web add dsh-waste-market
+dsh plugin --profile web add @a23842/dsh-waste-market
 ```
 
 或手动安装（开发模式）：
 
 ```bash
 # 1. 把包链接进 web profile 的 node_modules（或 pnpm add file:...）
-ln -s "<本包路径>" "$DSH_HOME/profiles/web/node_modules/dsh-waste-market"
+ln -s "<本包路径>" "$DSH_HOME/profiles/web/node_modules/@a23842/dsh-waste-market"
 
 # 2. 在 $DSH_HOME/profiles/web/cordis.patch.yml 追加：
 # - insert:
 #     - id: waste-market
-#       name: 'dsh-waste-market'
+#       name: '@a23842/dsh-waste-market'
 
 # 3. profile 配置 watcher 会在 ~1s 内热重组合；浏览器刷新页面后侧边栏出现 📊 入口。
 #    若修改了 lib/index.js（服务端代码），需要重启 DeepSeek Harness 进程生效。

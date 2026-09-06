@@ -1,6 +1,6 @@
 {
-  "name": "dsh-waste-market",
-  "version": "0.6.1",
+  "name": "@a23842/dsh-waste-market",
+  "version": "0.6.2",
   "description": "DSH Waste Market — A-share market dashboard for DeepSeek Harness: realtime indices & quotes, stock detail with K-line (adjusted), watchlist, screener (scoring + multi-strategy), 7x24 multi-source news, market sentiment thermometer (limit-up ladder / breadth). Runs as a DSH web client plugin.",
   "keywords": [
     "dsh",

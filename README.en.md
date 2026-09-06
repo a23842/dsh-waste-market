@@ -28,19 +28,19 @@ All data is proxied by the plugin's server half and served to the browser same-o
 ## Install
 
 ```bash
-dsh plugin --profile web add dsh-waste-market
+dsh plugin --profile web add @a23842/dsh-waste-market
 ```
 
 Or manually (development mode):
 
 ```bash
 # 1. Link the package into the web profile's node_modules (or pnpm add file:...)
-ln -s "<repo path>" "$DSH_HOME/profiles/web/node_modules/dsh-waste-market"
+ln -s "<repo path>" "$DSH_HOME/profiles/web/node_modules/@a23842/dsh-waste-market"
 
 # 2. Append to $DSH_HOME/profiles/web/cordis.patch.yml:
 # - insert:
 #     - id: waste-market
-#       name: 'dsh-waste-market'
+#       name: '@a23842/dsh-waste-market'
 
 # 3. The profile watcher recomposes in ~1s; hard-refresh the page to see the 📊 entry.
 #    If lib/index.js (server half) changed, restart the DeepSeek Harness process.
