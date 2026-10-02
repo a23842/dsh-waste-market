@@ -49,11 +49,14 @@ ln -s "<本包路径>" "$DSH_HOME/profiles/web/node_modules/@czf1995/dsh-waste-m
 
 ## 结构
 
-- `lib/index.js` — 服务端 cordis 插件：`/api/waste-market/*` 路由 + 自选股持久化 + 快讯聚合
+- `lib/index.js` — 服务端 cordis 插件：`/api/waste-market/*` 路由 + 自选股/持仓持久化 + 快讯聚合
 - `lib/emrank.js` — 东方财富榜单 / 板块 / 龙虎榜 / 资金流数据
 - `lib/fetch-utils.js` — 共享 fetch 工具（GBK 解码、多主机回退）
 - `lib/screener.js` — 条件选股引擎
 - `lib/advisor.js` — 建议引擎（透明评分 / 观察等级 / 风险解释，纯函数可测试）
+- `lib/holdings.js` — 持仓诊断（浮盈 / 建议止损位 / 操作建议，复用 advisor 评分）
+- `lib/sectorhistory.js` — 板块轮动历史（按天懒加载采样 + 1/5/10 日强度与排名变动）
+- `lib/backtest.js` — 策略回测引擎（日K逐日重放技术信号，统计胜率/收益/回撤）
 - `lib/client.js` — 浏览器端面板（React）
 - `cordis.patch.yml` — 插件行注册（`dsh.bundle.patch`）
 
