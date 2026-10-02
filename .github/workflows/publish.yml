@@ -1,8 +1,7 @@
 name: Publish to npm
 
-# 推送 v* tag 时，通过 npm Trusted Publishing (OIDC) 发布到 npm。
-# 发布前请在 npmjs.com 为 @czf1995/dsh-waste-market 配置 Trusted Publisher:
-#   Owner: a23842  Repository: dsh-waste-market  Workflow: publish.yml
+# 推送 v* tag 时，通过 GitHub Actions Secret NPM_TOKEN 发布到 npm。
+# NPM_TOKEN 只存于 GitHub 仓库 Secrets，不写入源码或日志。
 
 on:
   push:
@@ -14,7 +13,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      id-token: write # OIDC Trusted Publishing 必需
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -23,10 +21,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "24"
-          # 不设 registry-url：避免 setup-node 往 .npmrc 写入
-          # //registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN} 占位行。
-          # 该行在未设 NODE_AUTH_TOKEN 时解析为空 token，会顶掉 OIDC
-          # Trusted Publishing 流程，导致 publish 以空凭据 PUT → 404。
+          registry-url: "https://registry.npmjs.org"
 
       - name: Verify tag matches package.json version
         run: |
@@ -38,10 +33,7 @@ jobs:
             exit 1
           fi
 
-      - name: Ensure npm >= 11.5.1 (OIDC Trusted Publishing)
-        run: |
-          npm install -g npm@latest
-          echo "npm now = $(npm -v)"
-
       - name: Publish
         run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
