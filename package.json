@@ -13,6 +13,10 @@
     "market"
   ],
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/a23842/dsh-waste-market.git"
+  },
   "main": "lib/index.js",
   "exports": {
     ".": "./lib/index.js",
