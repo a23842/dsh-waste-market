@@ -23,7 +23,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "24"
-          registry-url: "https://registry.npmjs.org"
+          # 不设 registry-url：避免 setup-node 往 .npmrc 写入
+          # //registry.npmjs.org/:_authToken=${NODE_AUTH_TOKEN} 占位行。
+          # 该行在未设 NODE_AUTH_TOKEN 时解析为空 token，会顶掉 OIDC
+          # Trusted Publishing 流程，导致 publish 以空凭据 PUT → 404。
 
       - name: Verify tag matches package.json version
         run: |
